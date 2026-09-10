@@ -14,33 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              lime: '#55BB00',
-              emerald: '#008837',
-              dark: '#0B131F',
-              slate: '#1E293B',
-              surface: '#F8FAFC',
-              border: '#E2E8F0',
-            }
-          },
-          backgroundImage: {
-            'brand-gradient': 'linear-gradient(135deg, #55BB00 0%, #008837 100%)',
-            'brand-subtle': 'linear-gradient(180deg, rgba(85, 187, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%)',
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Production Stylesheet (Tailwind CSS) -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="bg-white text-brand-dark antialiased selection:bg-brand-lime selection:text-white font-sans">
 
