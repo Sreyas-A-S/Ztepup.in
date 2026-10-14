@@ -49,8 +49,74 @@
   
   <!-- Production Stylesheet (Tailwind CSS) -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Minimal Preloader Styles (Inline for zero render-blocking delay) -->
+  <style>
+    #site-preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+      will-change: opacity, visibility;
+    }
+    #site-preloader.preloader-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .preloader-logo-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: preloaderPulse 1.8s ease-in-out infinite;
+    }
+    .preloader-bar-track {
+      width: 110px;
+      height: 2.5px;
+      background: #eef2f6;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 18px;
+      position: relative;
+    }
+    .preloader-bar-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, #55bb00, #008837);
+      border-radius: 999px;
+      animation: preloaderSlide 1.2s ease-in-out infinite;
+    }
+    @keyframes preloaderSlide {
+      0% { left: -40%; width: 30%; }
+      50% { left: 35%; width: 50%; }
+      100% { left: 100%; width: 30%; }
+    }
+    @keyframes preloaderPulse {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+  </style>
 </head>
 <body class="bg-white text-brand-dark antialiased selection:bg-brand-lime selection:text-white font-sans">
+
+  <!-- ================= MINIMAL PRELOADER ================= -->
+  <div id="site-preloader" aria-hidden="true">
+    <div class="preloader-logo-wrapper">
+      <img src="assets/images/logo.svg" alt="Ztepup.in" class="h-8 sm:h-9 w-auto object-contain" />
+    </div>
+    <div class="preloader-bar-track">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
 
   <!-- ================= NAVBAR ================= -->
   <header class="absolute top-0 left-0 right-0 z-50 bg-transparent transition-all">
@@ -1103,6 +1169,29 @@
 
       requestAnimationFrame(animate);
     })();
+
+    // Preloader Dismissal: Fades out cleanly once DOM & critical resources load
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('site-preloader');
+      if (preloader) {
+        // Small delay to ensure smooth layout paints
+        setTimeout(() => {
+          preloader.classList.add('preloader-hidden');
+          setTimeout(() => {
+            preloader.remove();
+          }, 550);
+        }, 150);
+      }
+    });
+
+    // Safety fallback in case of slow resources
+    setTimeout(() => {
+      const preloader = document.getElementById('site-preloader');
+      if (preloader && !preloader.classList.contains('preloader-hidden')) {
+        preloader.classList.add('preloader-hidden');
+        setTimeout(() => preloader.remove(), 550);
+      }
+    }, 2800);
   </script>
 </body>
 </html>
