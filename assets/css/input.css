@@ -1,3 +1,135 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes fluidGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-fluid-dark {
+  background: linear-gradient(-45deg, #0B131F, #052615, #0A3A20, #0B131F);
+  background-size: 300% 300%;
+  animation: fluidGradient 10s ease infinite;
+}
+
+.animate-fluid-light {
+  background: linear-gradient(-45deg, #F8FAFC, #EAF8E6, #F0FAEE, #F8FAFC);
+  background-size: 300% 300%;
+  animation: fluidGradient 12s ease infinite;
+}
+
+/* Seamless feather-faded edge mask with zero sharp borders */
+.feather-mask-radial {
+  mask-image: radial-gradient(circle at 100% 100%, black 20%, rgba(0, 0, 0, 0.6) 50%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 100% 100%, black 20%, rgba(0, 0, 0, 0.6) 50%, transparent 80%);
+}
+
+/* Lined notebook paper background texture */
+.paper-lined-bg {
+  background-color: #fafbfc;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    #e9edf2 31px,
+    #e9edf2 32px
+  );
+}
+
+/* 3D Glass / Plastic Pushpin styling */
+.pushpin {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.7), inset 0 -3px 5px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+}
+
+.pushpin::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9), transparent 70%);
+}
+
+.pushpin-orange {
+  background: radial-gradient(circle at 35% 35%, #ff8a50 0%, #ff5722 65%, #c41c00 100%);
+}
+
+.pushpin-blue {
+  background: radial-gradient(circle at 35% 35%, #64b5f6 0%, #1e88e5 65%, #0d47a1 100%);
+}
+
+.pushpin-purple {
+  background: radial-gradient(circle at 35% 35%, #ba68c8 0%, #8e24aa 65%, #4a148c 100%);
+}
+
+/* Realistic pinned paper drop shadow */
+.pinned-note-shadow {
+  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+}
+
+/* Semi-circular radial arc gallery & reflections */
+.arc-card-reflection {
+  -webkit-box-reflect: below 8px linear-gradient(to bottom, rgba(0, 0, 0, 0.0) 60%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.arc-card-hover {
+  cursor: pointer;
+}
+
+.arc-card-hover.is-hovered {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.08);
+}
+
+/* Ambient glow & floating animation */
+@keyframes ambientFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-ambient-float {
+  animation: ambientFloat 6s ease-in-out infinite;
+}
+
+/* Dynamic Rotating Arc Card styling for smooth 60fps animation */
+.rotating-arc-card {
+  position: absolute;
+  width: 7rem;
+  height: 9.5rem;
+  top: 0;
+  left: 0;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .rotating-arc-card {
+    width: 7.75rem;
+    height: 10.25rem;
+  }
+}
+
+

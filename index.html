@@ -9,10 +9,10 @@
   <!-- Lenis Smooth Scroll CSS -->
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
   
-  <!-- Inter Font -->
+  <!-- Plus Jakarta Sans & Cormorant Garamond / Playfair Display for Editorial Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Production Stylesheet (Tailwind CSS) -->
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -20,318 +20,714 @@
 <body class="bg-white text-brand-dark antialiased selection:bg-brand-lime selection:text-white font-sans">
 
   <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-brand-border">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+  <header class="absolute top-0 left-0 right-0 z-50 bg-transparent transition-all">
+    <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16 h-20 flex items-center justify-between">
       <!-- Logo Branding -->
       <a href="#" class="flex items-center">
-        <img src="assets/images/logo.svg" alt="Ztepup.in Logo" class="h-9 sm:h-10 w-auto object-contain" />
+        <img src="assets/images/logo.svg" alt="Ztepup.in Logo" class="h-8 sm:h-10 w-auto object-contain" />
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-600">
+      <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-800">
         <a href="#services" class="hover:text-brand-emerald transition-colors">Services</a>
         <a href="#products" class="hover:text-brand-emerald transition-colors">Products</a>
         <a href="#about" class="hover:text-brand-emerald transition-colors">About</a>
         <a href="#testimonials" class="hover:text-brand-emerald transition-colors">Results</a>
       </nav>
 
-      <!-- Action Button -->
-      <div class="flex items-center gap-4">
-        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-gradient text-white text-sm font-semibold shadow-sm hover:shadow-md hover:opacity-95 transition-all">
+      <!-- Action Button & Mobile Hamburger -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 sm:px-6 py-2.5 rounded-full bg-brand-lime text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-brand-emerald transition-all">
           Scale My Business ↗
         </a>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden w-10 h-10 rounded-full bg-white/80 backdrop-blur-md border border-white/90 shadow-sm flex items-center justify-center text-slate-800 hover:bg-white focus:outline-none">
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-6 pt-2 bg-white/95 backdrop-blur-xl border-b border-brand-border/60 shadow-xl transition-all">
+      <nav class="flex flex-col gap-3 font-semibold text-slate-800 text-sm">
+        <a href="#services" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-brand-lime/10 hover:text-brand-emerald transition-colors">Services</a>
+        <a href="#products" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-brand-lime/10 hover:text-brand-emerald transition-colors">Products</a>
+        <a href="#about" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-brand-lime/10 hover:text-brand-emerald transition-colors">About</a>
+        <a href="#testimonials" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-brand-lime/10 hover:text-brand-emerald transition-colors">Results</a>
+        <a href="#contact" class="mobile-nav-link mt-2 text-center py-3 rounded-xl bg-brand-lime text-white font-bold shadow-md hover:bg-brand-emerald transition-all">
+          Scale My Business ↗
+        </a>
+      </nav>
     </div>
   </header>
 
   <!-- ================= HERO SECTION ================= -->
-  <section class="relative pt-16 pb-20 md:pt-24 md:pb-28 bg-brand-subtle overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 text-center">
+  <section class="relative min-h-screen flex flex-col justify-start pt-20 sm:pt-28 pb-10 sm:py-28 overflow-hidden bg-slate-100 text-slate-900">
+    <!-- Background Video (Focal point shifted on mobile so character is clearly visible & centered) -->
+    <div class="absolute inset-0 overflow-hidden z-0">
+      <video autoplay loop muted playsinline class="w-full h-full object-cover object-[72%_center] sm:object-center scale-[1.07] transform-gpu opacity-100">
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
+    </div>
+    
+    <!-- Vibrant Sky Blue Ambient Tint Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-400/15 via-blue-500/8 to-transparent mix-blend-color z-0 pointer-events-none"></div>
+
+    <!-- Soft Light Scrim Overlay for Clean Text Contrast Across Top Sky -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-white/40 to-transparent sm:bg-gradient-to-r sm:from-white/35 sm:via-white/10 sm:to-transparent z-0 pointer-events-none"></div>
+
+    <!-- Bottom-Right Feather-Faded Edge Concealment Mask (Zero Sharp Borders) -->
+    <div class="absolute bottom-0 right-0 w-80 h-64 feather-mask-radial pointer-events-none z-0">
+      <div class="w-full h-full backdrop-blur-md bg-gradient-to-tl from-sky-100/30 via-slate-100/15 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1700px] mx-auto px-5 sm:px-10 lg:px-16 mt-2 sm:my-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
+        
+        <!-- Left Content Column (Main Hero Messaging - Optimized for mobile viewports) -->
+        <div class="lg:col-span-7 text-left max-w-2xl space-y-4 sm:space-y-5 bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-5 sm:p-0 rounded-3xl border border-white/80 sm:border-0 shadow-lg sm:shadow-none">
+          
+          <!-- Announcement Pill -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/90 shadow-xs text-[10px] sm:text-[11px] font-semibold tracking-wide text-slate-800">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-lime animate-pulse"></span>
+            BUILT FOR REAL DIGITAL GROWTH
+          </div>
+
+          <!-- Main Headline (Animated Looping Relatable & Humorous Headlines) -->
+          <div class="min-h-[85px] sm:min-h-[130px] md:min-h-[150px] flex flex-col justify-center">
+            <h1 id="hero-headline" class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.18] transition-all duration-500 transform opacity-100 translate-y-0">
+              Running Ads But Getting <span class="font-serif italic font-normal text-brand-emerald">zero</span> Customers?
+            </h1>
+            <p id="hero-subtitle" class="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-slate-600 max-w-lg font-normal leading-relaxed transition-all duration-500 transform opacity-100 translate-y-0">
+              Stop losing money on empty clicks. We build simple marketing funnels that bring real people with real wallets.
+            </p>
+          </div>
+
+          <!-- Call to Actions -->
+          <div class="flex flex-wrap items-center gap-3 pt-0.5">
+            <a href="#contact" class="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full bg-slate-900 text-white font-semibold hover:bg-black transition-all shadow-md text-xs sm:text-sm">
+              <span>Explore Solutions</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+          <!-- Bottom Feature Highlights (Compact on mobile) -->
+          <div class="pt-3 sm:pt-8 border-t border-slate-900/10 grid grid-cols-3 gap-2 sm:gap-5 max-w-sm sm:max-w-md">
+            <div class="space-y-0.5">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 backdrop-blur-md border border-white/90 flex items-center justify-center text-slate-800 mb-1 shadow-xs">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <p class="text-[10px] sm:text-[11px] font-bold text-slate-900 leading-tight">Ultra High ROAS</p>
+              <p class="text-[9px] sm:text-[10px] text-slate-600">Built to convert</p>
+            </div>
+            
+            <div class="space-y-0.5">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 backdrop-blur-md border border-white/90 flex items-center justify-center text-slate-800 mb-1 shadow-xs">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <p class="text-[10px] sm:text-[11px] font-bold text-slate-900 leading-tight">Lightweight</p>
+              <p class="text-[9px] sm:text-[10px] text-slate-600">Fast & reactive</p>
+            </div>
+            
+            <div class="space-y-0.5">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 backdrop-blur-md border border-white/90 flex items-center justify-center text-slate-800 mb-1 shadow-xs">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+              </div>
+              <p class="text-[10px] sm:text-[11px] font-bold text-slate-900 leading-tight">All Terrain</p>
+              <p class="text-[9px] sm:text-[10px] text-slate-600">Omni-channel</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Floating Glass Badges & Pointer Column (Visible on Desktop/Tablets, Hidden on Small Mobile to Prevent Cluttering the Video Background) -->
+        <div class="hidden lg:flex lg:col-span-5 relative lg:min-h-[440px] flex-col justify-between">
+          
+          <!-- Top Right Glass Badge (Precision Targeting) -->
+          <div class="self-end bg-white/60 sm:bg-white/40 backdrop-blur-xl border border-white/70 p-2.5 sm:p-3 px-3.5 rounded-2xl shadow-lg flex items-center gap-3 text-slate-900 z-20 max-w-xs transition-transform hover:scale-105">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/80 border border-white/90 flex items-center justify-center text-slate-900 shadow-xs flex-shrink-0">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-[11px] sm:text-xs font-bold text-slate-900 truncate">Precision Targeting</p>
+              <p class="text-[9px] sm:text-[10px] text-slate-600 truncate">Lightweight & high converting</p>
+            </div>
+            <span class="ml-2 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/70 flex items-center justify-center text-slate-800 text-[9px] sm:text-[10px] font-bold">→</span>
+          </div>
+
+          <!-- Center 360° Circular Badge -->
+          <div class="self-end lg:mr-8 my-4 bg-white/50 sm:bg-white/30 backdrop-blur-md border border-white/70 rounded-full p-1.5 sm:p-2 pl-3 pr-3.5 inline-flex items-center gap-2 text-xs font-semibold text-slate-900 shadow-md z-20 transition-transform hover:scale-105">
+            <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-slate-800/40 flex items-center justify-center text-[8px] sm:text-[9px] font-bold tracking-tighter">
+              360°
+            </div>
+            <span class="text-slate-700 text-[9px] sm:text-[10px]">View Solutions</span>
+          </div>
+
+          <!-- Bottom Right Glass Preview Card -->
+          <div class="self-end bg-white/60 sm:bg-white/40 backdrop-blur-xl border border-white/70 p-2.5 sm:p-3 px-3.5 rounded-2xl shadow-lg flex items-center gap-3 max-w-xs text-slate-900 z-20 transition-transform hover:scale-105">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-brand-dark/90 flex-shrink-0 flex items-center justify-center text-white text-sm shadow-md overflow-hidden">
+              📈
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-[11px] sm:text-xs font-bold text-slate-900 truncate">Automated Lead Engine</p>
+              <p class="text-[9px] sm:text-[10px] text-slate-600 truncate">Reliable conversion in all market conditions</p>
+            </div>
+            <span class="text-slate-600 hover:text-slate-900 cursor-pointer text-xs font-bold">→</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT WE DELIVER (RADIAL ARCH GALLERY) ================= -->
+  <section id="services" class="py-24 sm:py-32 bg-white text-brand-dark border-t border-brand-border/60 relative overflow-hidden">
+    
+    <!-- Top Branding & Section Header -->
+    <div class="max-w-3xl mx-auto px-6 text-center mb-12 sm:mb-16">
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark tracking-tight leading-tight">
+        Engineered For Acquisition
+      </h2>
+    </div>
+
+    <!-- Arch Gallery Display Container -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
       
-      <!-- Announcement Pill -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brand-border shadow-xs text-xs font-semibold text-gray-700 mb-8">
-        <span class="w-2 h-2 rounded-full bg-brand-lime animate-pulse"></span>
-        Data-Driven Growth & Business Solutions
+      <!-- DESKTOP RADIAL ARCH (Visible on md and up) -->
+      <div class="hidden md:block relative w-full h-[520px] lg:h-[580px] mx-auto select-none">
+        
+        <!-- Center Floating Minimal Focal Point Inside the Arch -->
+        <div class="absolute inset-x-0 bottom-16 flex flex-col items-center justify-center text-center z-20 pointer-events-auto">
+          <h3 class="text-2xl lg:text-3xl font-extrabold text-brand-dark tracking-tight leading-tight">
+            Clean, Fast & Scalable
+          </h3>
+          <p class="mt-2 text-xs text-slate-500 font-medium">
+            Turn traffic into predictable, high-value client bookings.
+          </p>
+
+          <!-- Pill CTA Button -->
+          <a href="#contact" class="mt-5 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-dark text-white text-xs font-bold hover:bg-black hover:scale-105 transition-all shadow-md">
+            <span>Explore All Capabilities</span>
+            <span class="text-xs">&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Dynamic Rotating Arc Stage (9 cards in continuous smooth clockwise orbit) -->
+        <div id="arc-stage" class="absolute inset-0 pointer-events-none">
+          <!-- Card 0: Web Platforms -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="0">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Web Platforms" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 1: Brand & Media -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="1">
+            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80" alt="Brand & Media" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 2: Paid Ads -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="2">
+            <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=600&q=80" alt="Paid Ads" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 3: Growth Sprints -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="3">
+            <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=600&q=80" alt="Growth Sprints" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 4: UX & CRO (Keystone) -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-xl border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="4">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="UX & CRO" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 5: Lead Engines -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="5">
+            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80" alt="Lead Engines" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 6: Organic SEO -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="6">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80" alt="Organic SEO" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 7: Automations -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="7">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Automations" class="w-full h-full object-cover" />
+          </div>
+
+          <!-- Card 8: RevOps -->
+          <div class="rotating-arc-card rounded-2xl overflow-hidden shadow-lg border-2 border-white arc-card-hover pointer-events-auto z-10" data-card-idx="8">
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" alt="RevOps" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-brand-dark max-w-4xl mx-auto leading-[1.15]">
-        Ready to <span class="bg-brand-gradient bg-clip-text text-transparent">step up</span> your digital pipeline?
-      </h1>
+      <!-- MOBILE DEDICATED VIEW (Sleek Horizontal Snap Carousel matching desktop 3D assets) -->
+      <div class="block md:hidden">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-extrabold text-brand-dark leading-tight">
+            Clean, Fast & Scalable
+          </h3>
+          <p class="mt-1.5 text-xs text-slate-500">
+            Turn traffic into predictable, high-value client bookings.
+          </p>
+        </div>
 
-      <!-- Subtitle -->
-      <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">
-        High-impact performance marketing, client acquisition funnels, and precision-engineered websites designed to convert clicks into sustainable revenue.
+        <!-- Horizontal Swipeable 3D Carousel with smooth snapping -->
+        <div class="flex gap-3.5 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-2 -mx-2">
+          <!-- Mobile Card 0 -->
+          <div class="snap-center shrink-0 w-60 rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-white">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80" alt="Web Platforms" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-3.5">
+              <p class="text-xs font-bold text-slate-900">Web Platforms</p>
+              <p class="text-[11px] text-slate-500 mt-0.5">Sub-second modern stacks built for conversions.</p>
+            </div>
+          </div>
+
+          <!-- Mobile Card 1 -->
+          <div class="snap-center shrink-0 w-60 rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-white">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=500&q=80" alt="Brand & Media" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-3.5">
+              <p class="text-xs font-bold text-slate-900">Brand & Media</p>
+              <p class="text-[11px] text-slate-500 mt-0.5">Distinct visual systems and high-converting creative assets.</p>
+            </div>
+          </div>
+
+          <!-- Mobile Card 2 -->
+          <div class="snap-center shrink-0 w-60 rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-white">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=500&q=80" alt="Paid Ads" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-3.5">
+              <p class="text-xs font-bold text-slate-900">Paid Acquisition</p>
+              <p class="text-[11px] text-slate-500 mt-0.5">Targeted Meta and Google campaigns focused on genuine ROI.</p>
+            </div>
+          </div>
+
+          <!-- Mobile Card 3 -->
+          <div class="snap-center shrink-0 w-60 rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-white">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=500&q=80" alt="CRO & SEO" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-3.5">
+              <p class="text-xs font-bold text-slate-900">CRO & Funnels</p>
+              <p class="text-[11px] text-slate-500 mt-0.5">Reducing friction and turning visitors into paying buyers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 text-white text-xs font-bold shadow-md">
+            <span>Explore All Capabilities</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <!-- ================= HOW WE WORK (TASTEFUL MEDIUM PALETTE, ZERO EMOJIS) ================= -->
+  <section id="products" class="py-20 sm:py-24 bg-slate-50/80 text-brand-dark border-t border-brand-border/60 relative overflow-hidden">
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100/70 border border-emerald-200 px-3 py-1 rounded-full">
+          Structured Process
+        </span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight mt-3">
+          How We Work With You
+        </h2>
+        <p class="mt-2 text-xs sm:text-sm text-slate-500">
+          From initial audit to live launch in under 3 weeks.
+        </p>
+      </div>
+
+      <!-- 3-Pillar Balanced Cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <!-- Phase 1: Audit -->
+        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/90 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-mono">
+                01 / Week 1
+              </span>
+              <span class="text-xs font-semibold text-slate-500">Discovery</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-brand-dark">
+              Audit & Funnel Strategy
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              We audit your website speed, conversion drop-offs, and competitor ad strategies to lock in an agreed roadmap.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+            <span class="text-slate-400">Output:</span>
+            <span class="font-semibold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-md">Action Roadmap</span>
+          </div>
+        </div>
+
+        <!-- Phase 2: Build -->
+        <div class="bg-white p-6 sm:p-7 rounded-2xl border-2 border-emerald-500/50 shadow-md flex flex-col justify-between relative">
+          <div class="absolute -top-3 left-6 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded shadow-xs">
+            Build Phase
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4 mt-1">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-mono">
+                02 / Weeks 2–3
+              </span>
+              <span class="text-xs font-semibold text-emerald-700">Execution</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-brand-dark">
+              High-Speed Build & Ads
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              We engineer fast-loading landing pages and launch targeted Google & Meta campaigns with verified tracking.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+            <span class="text-slate-400">Output:</span>
+            <span class="font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md">Live Funnel & Ads</span>
+          </div>
+        </div>
+
+        <!-- Phase 3: Optimize -->
+        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/90 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-mono">
+                03 / Ongoing
+              </span>
+              <span class="text-xs font-semibold text-slate-500">Scale</span>
+            </div>
+            
+            <h3 class="text-lg font-bold text-brand-dark">
+              Lead Routing & Tuning
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Inquiries route instantly to WhatsApp or CRM. We test creatives and refine ad budgets based on closed revenue.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+            <span class="text-slate-400">Output:</span>
+            <span class="font-semibold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-md">Weekly ROI Reports</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ABOUT US (BALANCED & CLEAN, ZERO EMOJIS) ================= -->
+  <section id="about" class="py-20 sm:py-24 bg-white border-t border-brand-border">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-700">
+          About Ztepup.in
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-brand-dark leading-tight">
+          Practical web engineering & performance marketing.
+        </h2>
+        <p class="mt-3.5 text-slate-600 leading-relaxed text-sm">
+          We help growing businesses build fast websites and run high-converting ad campaigns. No vanity metrics or bloated agency retainers — just direct communication with experienced operators.
+        </p>
+        
+        <!-- Clean Balanced Metric Badges -->
+        <div class="mt-7 grid grid-cols-3 gap-3">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 text-center">
+            <p class="text-xl font-bold text-slate-900">100%</p>
+            <p class="text-[10px] text-slate-500 mt-0.5">Asset Ownership</p>
+          </div>
+          
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 text-center">
+            <p class="text-xl font-bold text-slate-900">&lt; 1s</p>
+            <p class="text-[10px] text-slate-500 mt-0.5">Page Speed</p>
+          </div>
+          
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 text-center">
+            <p class="text-xl font-bold text-slate-900">Direct</p>
+            <p class="text-[10px] text-slate-500 mt-0.5">Lead Contact</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Capability Clean Badges (Clean SVG Icons, Zero Emojis) -->
+      <div class="bg-slate-50/70 p-6 sm:p-7 rounded-2xl border border-slate-200/90 space-y-3">
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Core Disciplines</p>
+        
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200/80 text-xs">
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <span class="font-bold text-slate-900">Landing Pages & Web Platforms</span>
+          </div>
+          <span class="text-[11px] font-medium text-slate-500">Tailwind, Next.js</span>
+        </div>
+
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200/80 text-xs">
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <span class="font-bold text-slate-900">Google & Meta Ad Campaigns</span>
+          </div>
+          <span class="text-[11px] font-medium text-slate-500">Search, PMax, Meta</span>
+        </div>
+
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200/80 text-xs">
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <span class="font-bold text-slate-900">Analytics & WhatsApp Routing</span>
+          </div>
+          <span class="text-[11px] font-medium text-slate-500">GA4, Pixel, Alerts</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS & TRUST (COMPACT PINNED BOARD) ================= -->
+  <section id="testimonials" class="py-16 sm:py-20 paper-lined-bg border-t border-brand-border/60 relative overflow-hidden">
+    
+    <!-- Top Branding & Header -->
+    <div class="max-w-3xl mx-auto px-6 text-center mb-10 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-orange-500 text-white font-bold text-xs tracking-wider shadow-sm mb-3">
+        <span>⚡</span>
+        <span class="tracking-widest uppercase">ZTEPUP VERIFIED</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+        Real Client Results
+      </h2>
+      <p class="mt-2 text-xs sm:text-sm text-slate-600 max-w-lg mx-auto">
+        How growing businesses scale conversions and revenue with Ztepup.
+      </p>
+    </div>
+
+    <!-- Pinned Notes Canvas Container with Curved Connecting Thread -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative">
+      
+      <!-- SVG Connecting Dashed Wavy Thread -->
+      <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 900 850" fill="none">
+        <path d="M 280 80 C 480 120, 520 180, 680 230 C 500 330, 420 380, 290 460 C 440 540, 520 600, 680 660 C 520 740, 420 780, 310 820" 
+              stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5" opacity="0.45" />
+      </svg>
+
+      <div class="relative z-10 space-y-6 sm:space-y-8">
+        
+        <!-- Note 01: Left Pinned Note (Orange Pin) -->
+        <div class="flex justify-start md:ml-6 lg:ml-12">
+          <div class="relative w-full max-w-xs sm:max-w-sm bg-white rounded-2xl p-4 sm:p-5 pinned-note-shadow border border-slate-100 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            <div class="pushpin pushpin-orange"></div>
+            <div class="rounded-xl bg-orange-50/80 border border-orange-100/70 p-4 text-left">
+              <span class="text-orange-500 font-serif italic font-bold text-xl block mb-0.5">01</span>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">ROAS Doubled in 30 Days</h3>
+              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                "Ztepup transformed our incoming lead quality. Their hybrid ad funnels cut our acquisition costs by half in 30 days."
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-orange-200/50 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Harish Kumar</p>
+                  <p class="text-[10px] text-slate-500">Retail Solutions</p>
+                </div>
+                <span class="text-[10px] font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full">3.8x ROAS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note 02: Right Pinned Note (Blue Pin) -->
+        <div class="flex justify-end md:mr-6 lg:mr-12">
+          <div class="relative w-full max-w-xs sm:max-w-sm bg-white rounded-2xl p-4 sm:p-5 pinned-note-shadow border border-slate-100 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+            <div class="pushpin pushpin-blue"></div>
+            <div class="rounded-xl bg-blue-50/80 border border-blue-100/70 p-4 text-left">
+              <span class="text-blue-600 font-serif italic font-bold text-xl block mb-0.5">02</span>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">Instant Lead Engine</h3>
+              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                "A lightning-fast platform that channels traffic directly into CRM leads. Highly responsive with strong technical chops."
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-blue-200/50 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Sneha Pillai</p>
+                  <p class="text-[10px] text-slate-500">Founder, Edutech Hub</p>
+                </div>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">99.4% Lift</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note 03: Left Pinned Note (Purple Pin) -->
+        <div class="flex justify-start md:ml-10 lg:ml-20">
+          <div class="relative w-full max-w-xs sm:max-w-sm bg-white rounded-2xl p-4 sm:p-5 pinned-note-shadow border border-slate-100 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+            <div class="pushpin pushpin-purple"></div>
+            <div class="rounded-xl bg-purple-50/80 border border-purple-100/70 p-4 text-left">
+              <span class="text-purple-600 font-serif italic font-bold text-xl block mb-0.5">03</span>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">Real Cash, Zero Fluff</h3>
+              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                "Unlike typical agencies showing fluffy vanity views, Ztepup kept us laser-focused on real revenue and closed sales."
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-purple-200/50 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Arun V.</p>
+                  <p class="text-[10px] text-slate-500">Head of Growth, B2B</p>
+                </div>
+                <span class="text-[10px] font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">₹10M+ Growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note 04: Right Pinned Note (Orange Pin) -->
+        <div class="flex justify-end md:mr-10 lg:mr-20">
+          <div class="relative w-full max-w-xs sm:max-w-sm bg-white rounded-2xl p-4 sm:p-5 pinned-note-shadow border border-slate-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+            <div class="pushpin pushpin-orange"></div>
+            <div class="rounded-xl bg-orange-50/80 border border-orange-100/70 p-4 text-left">
+              <span class="text-orange-500 font-serif italic font-bold text-xl block mb-0.5">04</span>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">0.8-Second Page Speed</h3>
+              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                "Our old site had a 7-second lag. Rebuilt to load in 0.8s, causing an immediate 42% bump in mobile checkouts."
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-orange-200/50 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Vikram Nair</p>
+                  <p class="text-[10px] text-slate-500">Artisan D2C</p>
+                </div>
+                <span class="text-[10px] font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full">0.8s Load</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note 05: Left Pinned Note (Blue Pin) + Bottom Partner Stamp -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 md:ml-6 lg:ml-12">
+          <div class="relative w-full max-w-xs sm:max-w-sm bg-white rounded-2xl p-4 sm:p-5 pinned-note-shadow border border-slate-100 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            <div class="pushpin pushpin-blue"></div>
+            <div class="rounded-xl bg-blue-50/80 border border-blue-100/70 p-4 text-left">
+              <span class="text-blue-600 font-serif italic font-bold text-xl block mb-0.5">05</span>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">Clear Milestone Delivery</h3>
+              <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                "Weekly sprints, transparent WhatsApp updates, and zero nonsense. They operate like an elite in-house team."
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-blue-200/50 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] font-bold text-slate-900">Rhea Mehta</p>
+                  <p class="text-[10px] text-slate-500">Product Director</p>
+                </div>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">100% On-Time</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- End Partner Stamp Badge -->
+          <div class="flex items-center gap-3 bg-white/90 backdrop-blur-md border border-slate-200/80 px-4 py-2.5 rounded-full shadow-sm text-left">
+            <div class="w-8 h-8 rounded-full bg-brand-dark flex items-center justify-center text-white font-bold text-xs shadow-inner">
+              ⚡
+            </div>
+            <div>
+              <p class="text-[11px] font-medium text-slate-500">Your <span class="text-orange-500 font-bold">all-in-one</span></p>
+              <p class="text-[11px] font-bold text-slate-900">growth partner.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT / GET IN TOUCH (VIBRANT & COLORFUL) ================= -->
+  <section id="contact" class="py-20 sm:py-28 bg-gradient-to-b from-[#f8fafc] via-[#ecfdf5]/40 to-[#eff6ff]/50 text-brand-dark border-t border-brand-border/60 relative overflow-hidden">
+    
+    <!-- Ambient glowing color blooms -->
+    <div class="absolute -top-20 -left-20 w-80 h-80 bg-emerald-300/25 blur-[100px] rounded-full pointer-events-none"></div>
+    <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-teal-300/25 blur-[100px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      
+      <!-- Minimal Eyebrow -->
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold tracking-wide mb-5 shadow-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Get In Touch
+      </span>
+
+      <!-- Crisp Clean Headline -->
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight leading-tight">
+        Ready to scale your <span class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">business?</span>
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-slate-600 max-w-lg mx-auto font-medium">
+        Leave your details below or reach out directly. We'll get back to you with a custom plan.
       </p>
 
-      <!-- Call to Actions -->
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gradient text-white font-semibold shadow-lg shadow-brand-emerald/20 hover:shadow-xl hover:scale-[1.02] transition-all">
-          Get Free Growth Strategy
+      <!-- Direct Quick Connect Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5 mt-8 mb-10">
+        <a href="https://wa.me/919999999999?text=Hi%20Ztepup,%20I'd%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 text-white shadow-md shadow-emerald-600/20 hover:bg-emerald-700 text-xs font-bold hover:scale-105 transition-all">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+          <span>WhatsApp Chat</span>
         </a>
-        <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-gray-300 text-brand-dark font-semibold hover:bg-gray-50 transition-all">
-          Explore Solutions
+        <a href="mailto:info@ztepup.in"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-bold text-slate-700 hover:border-brand-emerald hover:text-brand-emerald hover:scale-105 transition-all">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>info@ztepup.in</span>
         </a>
       </div>
 
-      <!-- Hero Metric Badges -->
-      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-brand-border pt-10">
-        <div>
-          <p class="text-3xl font-extrabold text-brand-dark">3.8x</p>
-          <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1">Average Client ROAS</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-brand-emerald">₹10M+</p>
-          <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1">Attributed Revenue</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-brand-dark">99.4%</p>
-          <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1">Ad Conversion Lift</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-brand-lime">100%</p>
-          <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1">Custom Digital Builds</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= SERVICES SECTION ================= -->
-  <section id="services" class="py-24 bg-white border-t border-brand-border">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-xs font-bold tracking-widest text-brand-emerald uppercase">What We Deliver</h2>
-        <p class="mt-3 text-3xl sm:text-4xl font-extrabold text-brand-dark">Engineered for acquisition, backed by technology.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        
-        <!-- Service 1: Performance Ads -->
-        <div class="p-8 rounded-2xl bg-brand-surface border border-brand-border hover:border-brand-emerald/40 transition-all hover:shadow-lg">
-          <div class="w-12 h-12 rounded-xl bg-brand-gradient flex items-center justify-center text-white mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-brand-dark">Performance Marketing</h3>
-          <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-            Data-backed paid ad campaigns across Meta, Google Ads, and LinkedIn tailored to lower acquisition costs and scale qualified pipeline.
-          </p>
-        </div>
-
-        <!-- Service 2: SEO & Inbound Funnels -->
-        <div class="p-8 rounded-2xl bg-brand-surface border border-brand-border hover:border-brand-emerald/40 transition-all hover:shadow-lg">
-          <div class="w-12 h-12 rounded-xl bg-brand-gradient flex items-center justify-center text-white mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-brand-dark">Lead Engine & Funnels</h3>
-          <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-            Conversion rate optimization, CRM integrations, email marketing automation, and multi-step capture systems that convert passive traffic into bookings.
-          </p>
-        </div>
-
-        <!-- Service 3: High-Converting Websites -->
-        <div class="p-8 rounded-2xl bg-brand-surface border border-brand-border hover:border-brand-emerald/40 transition-all hover:shadow-lg">
-          <div class="w-12 h-12 rounded-xl bg-brand-gradient flex items-center justify-center text-white mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-brand-dark">High-Speed Web Platforms</h3>
-          <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-            Ultra-fast, responsive landing pages and custom websites engineered with modern frameworks to guarantee 90+ PageSpeed scores and direct conversion.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PRODUCTS / SOLUTIONS ================= -->
-  <section id="products" class="py-24 bg-brand-surface border-t border-brand-border">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="max-w-xl mb-16">
-        <h2 class="text-xs font-bold tracking-widest text-brand-emerald uppercase">Our Ecosystem</h2>
-        <p class="mt-3 text-3xl font-extrabold text-brand-dark">Modular frameworks tailored for growing businesses.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        
-        <!-- Product 1 -->
-        <div class="bg-white p-8 sm:p-10 rounded-3xl border border-brand-border shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="inline-block px-3 py-1 bg-brand-lime/15 text-brand-emerald text-xs font-bold rounded-md mb-4">Growth Stack</span>
-            <h3 class="text-2xl font-bold text-brand-dark">Ztepup Performance Hub</h3>
-            <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-              An all-in-one business growth service: custom analytics instrumentation, multi-channel ad attribution, and monthly strategic marketing execution.
-            </p>
-          </div>
-          <ul class="mt-6 space-y-2 text-sm text-gray-700">
-            <li class="flex items-center gap-2"><span class="text-brand-emerald">✔</span> Real-time client reporting dashboard</li>
-            <li class="flex items-center gap-2"><span class="text-brand-emerald">✔</span> Weekly creative iterations & A/B testing</li>
-            <li class="flex items-center gap-2"><span class="text-brand-emerald">✔</span> Automated lead routing & follow-ups</li>
-          </ul>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="bg-white p-8 sm:p-10 rounded-3xl border border-brand-border shadow-xs flex flex-col justify-between">
-          <div>
-            <span class="inline-block px-3 py-1 bg-brand-emerald/15 text-brand-emerald text-xs font-bold rounded-md mb-4">Web Stack</span>
-            <h3 class="text-2xl font-bold text-brand-dark">Ztepup Conversion Portals</h3>
-            <p class="mt-3 text-gray-600 text-sm leading-relaxed">
-              Bespoke business landing portals engineered for quick loading, zero bloat, intuitive CMS controls, and direct integration with your marketing stack.
-            </p>
-          </div>
-          <ul class="mt-6 space-y-2 text-sm text-gray-700">
-            <li class="flex items-center gap-2"><span class="text-brand-emerald">✔</span> Modern lightweight frontend builds</li>
-            <li class="flex items-center gap-2"><span class="text-brand-emerald">✔</span> On-page SEO & Schema metadata ready</li>
-            <li class="flex items-center gap-2"><span class="text-brand-emerald">✔</span> Seamless WhatsApp & email dispatch</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ABOUT US ================= -->
-  <section id="about" class="py-24 bg-white border-t border-brand-border">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <h2 class="text-xs font-bold tracking-widest text-brand-emerald uppercase">About Ztepup.in</h2>
-        <p class="mt-3 text-3xl sm:text-4xl font-extrabold text-brand-dark leading-tight">
-          We don't just generate impressions. We build predictable revenue streams.
-        </p>
-        <p class="mt-6 text-gray-600 leading-relaxed">
-          Most agencies stop at likes and pageviews. At <strong>Ztepup.in</strong>, our thesis is simple: every digital asset and campaign must directly serve your bottom line. 
-        </p>
-        <p class="mt-4 text-gray-600 leading-relaxed">
-          Whether you need a full-funnel digital marketing engine or high-speed conversion web infrastructure, our team merges agile technical skill with sharp performance marketing to push your brand forward.
-        </p>
-        <div class="mt-8 flex items-center gap-6">
-          <div class="border-l-2 border-brand-lime pl-4">
-            <p class="text-xl font-bold text-brand-dark">Execution First</p>
-            <p class="text-xs text-gray-500">Agile sprints and transparent metrics.</p>
-          </div>
-          <div class="border-l-2 border-brand-emerald pl-4">
-            <p class="text-xl font-bold text-brand-dark">Tech-Backed</p>
-            <p class="text-xs text-gray-500">Clean code, low latency, no fluff.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Illustration Mockup -->
-      <div class="relative bg-brand-surface p-8 rounded-3xl border border-brand-border">
-        <div class="bg-brand-dark text-white p-6 rounded-2xl shadow-xl">
-          <div class="flex items-center justify-between border-b border-gray-800 pb-4 mb-4">
-            <span class="text-xs font-mono text-brand-lime">SYSTEM_HEALTH: OPTIMAL</span>
-            <span class="text-xs text-gray-400">Monthly Run Rate</span>
-          </div>
-          <p class="text-sm text-gray-400">Attributed Conversion Velocity</p>
-          <p class="text-3xl font-extrabold text-white mt-1">+248.6%</p>
-          <div class="w-full bg-gray-800 h-2 rounded-full mt-4 overflow-hidden">
-            <div class="bg-brand-gradient h-full w-4/5 rounded-full"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TESTIMONIALS ================= -->
-  <section id="testimonials" class="py-24 bg-brand-surface border-t border-brand-border">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="text-center max-w-xl mx-auto mb-16">
-        <h2 class="text-xs font-bold tracking-widest text-brand-emerald uppercase">Client Feedback</h2>
-        <p class="mt-3 text-3xl font-extrabold text-brand-dark">Proven impact across industries.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        
-        <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-xs">
-          <div class="flex items-center text-brand-lime mb-4">★★★★★</div>
-          <p class="text-gray-700 text-sm italic leading-relaxed">
-            "Ztepup transformed our incoming lead quality within 30 days. Their hybrid approach combining paid funnels and a fast site revamp cut our cost per acquisition in half."
-          </p>
-          <p class="mt-6 font-bold text-sm text-brand-dark">Harish Kumar</p>
-          <p class="text-xs text-gray-500">Managing Director, Retail Solutions</p>
-        </div>
-
-        <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-xs">
-          <div class="flex items-center text-brand-lime mb-4">★★★★★</div>
-          <p class="text-gray-700 text-sm italic leading-relaxed">
-            "They delivered a clean, lightning-fast landing platform that converts traffic directly into CRM leads. Highly responsive team with strong technical chops."
-          </p>
-          <p class="mt-6 font-bold text-sm text-brand-dark">Sneha Pillai</p>
-          <p class="text-xs text-gray-500">Founder, Edutech Hub</p>
-        </div>
-
-        <div class="bg-white p-8 rounded-2xl border border-brand-border shadow-xs">
-          <div class="flex items-center text-brand-lime mb-4">★★★★★</div>
-          <p class="text-gray-700 text-sm italic leading-relaxed">
-            "Unlike typical digital agencies that show fluffy vanity metrics, Ztepup kept us laser-focused on real revenue targets and conversion optimization."
-          </p>
-          <p class="mt-6 font-bold text-sm text-brand-dark">Arun V.</p>
-          <p class="text-xs text-gray-500">Head of Growth, B2B Logistics</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT SECTION ================= -->
-  <section id="contact" class="py-24 bg-white border-t border-brand-border">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-      
-      <div>
-        <h2 class="text-xs font-bold tracking-widest text-brand-emerald uppercase">Get in Touch</h2>
-        <p class="mt-3 text-3xl sm:text-4xl font-extrabold text-brand-dark">Ready to take the next step?</p>
-        <p class="mt-4 text-gray-600 leading-relaxed">
-          Tell us about your current marketing goals or technical requirements. We'll run a complimentary audit and walk you through an actionable roadmap.
-        </p>
-
-        <div class="mt-8 space-y-4">
-          <div class="flex items-center gap-3">
-            <span class="w-10 h-10 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-emerald font-bold">✉</span>
-            <div>
-              <p class="text-xs text-gray-500">Direct Inquiries</p>
-              <a href="mailto:info@ztepup.in" class="text-brand-dark font-semibold hover:text-brand-emerald transition-colors">info@ztepup.in</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-10 h-10 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-emerald font-bold">↗</span>
-            <div>
-              <p class="text-xs text-gray-500">Official Portal</p>
-              <p class="text-brand-dark font-semibold">ztepup.in</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Simple Contact Form -->
-      <div class="bg-brand-surface p-8 sm:p-10 rounded-3xl border border-brand-border">
+      <!-- Minimal, Ultra-Clean Form Card with Vibrant Accent -->
+      <div class="max-w-xl mx-auto bg-white/95 backdrop-blur-md rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/50 p-8 sm:p-10 text-left">
         <form action="#" method="POST" class="space-y-4">
+          
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Full Name</label>
-            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald bg-white text-sm" />
+            <input type="text" required placeholder="Your Name" 
+                   class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 bg-slate-50/70 text-sm text-slate-800 transition-all" />
           </div>
+
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address</label>
-            <input type="email" required placeholder="you@company.com" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald bg-white text-sm" />
+            <input type="text" required placeholder="Email or Phone Number" 
+                   class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 bg-slate-50/70 text-sm text-slate-800 transition-all" />
           </div>
+
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Service Needed</label>
-            <select class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald bg-white text-sm">
-              <option>Digital Marketing & Lead Generation</option>
-              <option>Website & Landing Page Development</option>
-              <option>Full Performance Growth Stack</option>
-            </select>
+            <textarea rows="3" placeholder="Tell us about your project (optional)"
+                      class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 bg-slate-50/70 text-sm text-slate-800 transition-all resize-none"></textarea>
           </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Project Details</label>
-            <textarea rows="3" placeholder="Briefly describe your goals..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald bg-white text-sm"></textarea>
-          </div>
-          <button type="submit" class="w-full py-4 rounded-xl bg-brand-gradient text-white font-semibold shadow-md hover:opacity-95 transition-all">
-            Submit Consultation Request ↗
+
+          <button type="submit" 
+                  class="w-full py-4 px-6 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-sm tracking-wide shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2">
+            <span>Send Message</span>
+            <span class="text-base">&rarr;</span>
           </button>
+
+          <p class="text-center text-[11px] text-slate-400 mt-2 font-medium">
+            We value your privacy. No spam, ever.
+          </p>
+
         </form>
       </div>
 
@@ -358,12 +754,14 @@
   <!-- ================= SMOOTH SCROLL (LENIS) ================= -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script>
+    // Fast & Responsive Smooth Scroll Configuration
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 1.25,
+      touchMultiplier: 2.0,
+      infinite: false,
     });
 
     function raf(time) {
@@ -372,22 +770,306 @@
     }
     requestAnimationFrame(raf);
 
-    // Smooth anchor navigation with sticky navbar offset (-80px)
+    // Fast smooth anchor navigation with header offset
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href === '#' || href === '#!') {
           e.preventDefault();
-          lenis.scrollTo(0, { duration: 1.1 });
+          lenis.scrollTo(0, { duration: 0.7 });
           return;
         }
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          lenis.scrollTo(target, { offset: -80, duration: 1.1 });
+          lenis.scrollTo(target, { offset: -60, duration: 0.7 });
         }
       });
     });
+
+    // Mobile Navigation Drawer Toggle Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIconOpen.classList.add('hidden');
+          menuIconClose.classList.remove('hidden');
+        }
+      });
+
+      // Auto close drawer when clicking any link
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        });
+      });
+    }
+
+    // ================= HUMOROUS HEADLINE ROTATOR (SIMPLE & RELATABLE) =================
+    const headlineStories = [
+      {
+        title: 'Running Ads But Getting <span class="font-serif italic font-normal text-brand-emerald">zero</span> Customers?',
+        desc: "Stop losing money on empty clicks. We build simple marketing funnels that bring real people with real wallets."
+      },
+      {
+        title: 'Your Website Is Too Slow <span class="font-serif italic font-normal text-brand-emerald">even</span> For Grandmas?',
+        desc: "If it takes 5 seconds to load, your customers already went to your competitor. We make your site open instantly."
+      },
+      {
+        title: 'Getting Likes On Instagram, <span class="font-serif italic font-normal text-brand-emerald">but</span> Still Broke?',
+        desc: "Likes don't pay your bills. We help you turn random followers into paying clients with high-converting pages."
+      },
+      {
+        title: 'Your Sales Team Waiting <span class="font-serif italic font-normal text-brand-emerald">for</span> A Miracle Call?',
+        desc: "Hope is not a business plan. We build automated lead systems that deliver fresh customer inquiries every single week."
+      },
+      {
+        title: 'Sick Of Agencies Making <span class="font-serif italic font-normal text-brand-emerald">crazy</span> Big Promises?',
+        desc: "No confusing tech words. No fairy tales. Just more customers, better sales, and clear reports you can understand in 10 seconds."
+      },
+      {
+        title: 'Ranking On Page 10 <span class="font-serif italic font-normal text-brand-emerald">of</span> Google Search?',
+        desc: "Page 10 is where secrets stay hidden forever. We push your business to the top so people actually find you."
+      },
+      {
+        title: 'Customers Add To Cart <span class="font-serif italic font-normal text-brand-emerald">and</span> Vanish Into Thin Air?',
+        desc: "They loved the product until checkout was painful. We fix your checkout friction and bring abandoned buyers right back."
+      },
+      {
+        title: 'Your Cousin Built Your Site <span class="font-serif italic font-normal text-brand-emerald">in</span> 2014?',
+        desc: "Family discounts are great, but broken websites lose sales. Let us build a modern web platform your brand actually deserves."
+      },
+      {
+        title: 'Spent $1,000 On Boost Post <span class="font-serif italic font-normal text-brand-emerald">for</span> Two Bot Comments?',
+        desc: "The 'Boost Post' button is a trap. We set up real targeted campaigns that reach decision-makers who actually buy."
+      },
+      {
+        title: 'Your WhatsApp Inbox Quiet <span class="font-serif italic font-normal text-brand-emerald">as</span> A Library?',
+        desc: "Let's change that. We hook up direct WhatsApp click-to-chat ads that send ready buyers straight to your phone."
+      },
+      {
+        title: 'Customers Visiting Your Website <span class="font-serif italic font-normal text-brand-emerald">and</span> Leaving In 3 Seconds?',
+        desc: "Confusing headlines scare people away. We write clear, punchy copy that makes visitors stop, read, and hit buy."
+      },
+      {
+        title: 'Stuck Doing Everything Yourself <span class="font-serif italic font-normal text-brand-emerald">till</span> 2 AM?',
+        desc: "You started a business to grow, not to babysit broken ad dashboards. We automate your growth pipeline completely."
+      },
+      {
+        title: 'Losing Dream Clients <span class="font-serif italic font-normal text-brand-emerald">to</span> Mediocre Competitors?',
+        desc: "They don't have a better product, just better digital marketing. We help you outrank and outshine them."
+      },
+      {
+        title: 'Marketing Budget Shrinking <span class="font-serif italic font-normal text-brand-emerald">while</span> Stress Keeps Growing?',
+        desc: "Every rupee you spend should bring returns. We trim the ad waste and double down on what actually makes money."
+      },
+      {
+        title: 'Got 10,000 Views On Reels <span class="font-serif italic font-normal text-brand-emerald">and</span> Zero Bank Alerts?',
+        desc: "Going viral is fun, but paying the bills is better. We build the bridge that turns viral attention into closed sales."
+      },
+      {
+        title: 'Your Contact Form Broken <span class="font-serif italic font-normal text-brand-emerald">and</span> Nobody Noticed?',
+        desc: "Missing leads because of a broken submit button hurts. We test and bulletproof every conversion path on your site."
+      },
+      {
+        title: 'Competitor Running Ads On <span class="font-serif italic font-normal text-brand-emerald">your</span> Brand Name?',
+        desc: "They are stealing your customers right at your doorstep. We set up brand defense campaigns to reclaim what is yours."
+      },
+      {
+        title: 'Still Sending Price Quotes <span class="font-serif italic font-normal text-brand-emerald">through</span> Messy PDF Attachments?',
+        desc: "It is 2026. Give your clients sleek digital proposal pages where they can approve and pay in one tap."
+      },
+      {
+        title: 'Your Marketing Dashboard Looks <span class="font-serif italic font-normal text-brand-emerald">like</span> A NASA Control Room?',
+        desc: "Too many charts, zero clarity. We give you clean, straightforward numbers showing cost per lead and cash earned."
+      },
+      {
+        title: 'Customers Asking If Your Business <span class="font-serif italic font-normal text-brand-emerald">is</span> Still Alive?',
+        desc: "An outdated website makes people think you closed down. We refresh your brand with a crisp, active digital presence."
+      },
+      {
+        title: 'Getting Lots Of Clicks, <span class="font-serif italic font-normal text-brand-emerald">zero</span> Phone Calls?',
+        desc: "People are curious but hesitant. We add clear trust signals and instant booking tools so callers reach out immediately."
+      },
+      {
+        title: 'Still Wondering Where All <span class="font-serif italic font-normal text-brand-emerald">the</span> Customers Went?',
+        desc: "They are online searching right now. Let us build the digital funnel that brings them straight to your front door."
+      }
+    ];
+
+    // Shuffle headlines using Fisher-Yates so every page refresh displays a different starting caption
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+    shuffleArray(headlineStories);
+
+    let currentStoryIdx = 0;
+    const headlineEl = document.getElementById('hero-headline');
+    const subtitleEl = document.getElementById('hero-subtitle');
+
+    // Immediately render the freshly randomized starting story on page load
+    if (headlineEl && subtitleEl && headlineStories.length > 0) {
+      headlineEl.innerHTML = headlineStories[0].title;
+      subtitleEl.textContent = headlineStories[0].desc;
+
+      setInterval(() => {
+        // Step 1: Smooth fade out & slide up
+        headlineEl.classList.remove('opacity-100', 'translate-y-0');
+        headlineEl.classList.add('opacity-0', '-translate-y-2');
+        subtitleEl.classList.remove('opacity-100', 'translate-y-0');
+        subtitleEl.classList.add('opacity-0', '-translate-y-2');
+
+        setTimeout(() => {
+          // Step 2: Swap content
+          currentStoryIdx = (currentStoryIdx + 1) % headlineStories.length;
+          headlineEl.innerHTML = headlineStories[currentStoryIdx].title;
+          subtitleEl.textContent = headlineStories[currentStoryIdx].desc;
+
+          // Step 3: Reset below
+          headlineEl.classList.remove('-translate-y-2');
+          headlineEl.classList.add('translate-y-2');
+          subtitleEl.classList.remove('-translate-y-2');
+          subtitleEl.classList.add('translate-y-2');
+
+          // Step 4: Fade in & slide to position
+          requestAnimationFrame(() => {
+            headlineEl.classList.remove('opacity-0', 'translate-y-2');
+            headlineEl.classList.add('opacity-100', 'translate-y-0');
+            subtitleEl.classList.remove('opacity-0', 'translate-y-2');
+            subtitleEl.classList.add('opacity-100', 'translate-y-0');
+          });
+        }, 400);
+      }, 7500); // 7.5 seconds allows comfortable reading time
+    }
+
+    // ================= CONTINUOUS SMOOTH 60FPS ROTATING ARCH ENGINE =================
+    (function initRotatingArc() {
+      const stage = document.getElementById('arc-stage');
+      if (!stage) return;
+
+      const cards = Array.from(stage.querySelectorAll('.rotating-arc-card'));
+      const numCards = cards.length;
+      if (numCards === 0) return;
+
+      let hoveredCard = null;
+      let targetSpeed = 0.0032; // Normal cruising speed
+      let currentSpeed = 0.0032; // Active interpolated speed
+      let rotationAngle = 0; // In radians
+
+      // Per-card smooth scale interpolations
+      const cardScales = new Array(numCards).fill(1);
+
+      // Interactive hover with buttery smooth deceleration & soft scale
+      cards.forEach((card, idx) => {
+        card.addEventListener('mouseenter', () => {
+          hoveredCard = card;
+          targetSpeed = 0; // Smooth glide to stop
+          card.classList.add('is-hovered');
+        });
+        card.addEventListener('mouseleave', () => {
+          if (hoveredCard === card) {
+            hoveredCard = null;
+          }
+          targetSpeed = 0.0032; // Smoothly glide back to normal orbit speed
+          card.classList.remove('is-hovered');
+        });
+      });
+
+      function animate() {
+        // Smoothly interpolate currentSpeed towards targetSpeed (buttery ease-out deceleration)
+        currentSpeed += (targetSpeed - currentSpeed) * 0.08;
+
+        // Advance clockwise orbit with interpolated speed
+        if (Math.abs(currentSpeed) > 0.00002) {
+          rotationAngle -= currentSpeed;
+          if (rotationAngle < 0) {
+            rotationAngle += Math.PI * 2;
+          }
+        }
+
+        const stageWidth = stage.clientWidth || 900;
+        const stageHeight = stage.clientHeight || 550;
+
+        // Elliptical arch geometry
+        const centerX = stageWidth / 2;
+        const centerY = stageHeight * 0.90; // Lower center pivot point
+        const radiusX = stageWidth * 0.45;  // Horizontal reach
+        const radiusY = stageHeight * 0.78; // Vertical height of upper arch
+
+        cards.forEach((card, i) => {
+          // Linear angular step along the 360 circle
+          const rawAngle = rotationAngle + (i * ((Math.PI * 2) / numCards));
+          
+          // Normalized base angle in [-PI, PI]
+          let baseNorm = Math.atan2(Math.sin(rawAngle), Math.cos(rawAngle));
+
+          // Variable density distortion:
+          // Top dome expands (loosely packed), lower flanks compress (tightly packed)
+          const sign = baseNorm < 0 ? -1 : 1;
+          const absAngle = Math.abs(baseNorm);
+          const warpedNorm = sign * (absAngle + 0.32 * Math.sin(2 * absAngle));
+
+          // Compute (x, y) along the elliptical curve
+          const x = centerX + Math.cos(warpedNorm) * radiusX;
+          const y = centerY - Math.sin(warpedNorm) * radiusY;
+
+          // Tangent tilt angle (slants naturally along the curvature)
+          const tangentDeg = Math.cos(warpedNorm) * 34;
+
+          // Upper dome prominence
+          const isUpper = Math.sin(warpedNorm) > -0.20;
+          const depthProgress = Math.max(0, Math.min(1, (Math.sin(warpedNorm) + 1) / 2));
+
+          // Default resting scale along the arch
+          const baseScale = 0.80 + (depthProgress * 0.28);
+          // Target scale: when hovered, smoothly scale to 1.20
+          const targetCardScale = (card === hoveredCard) ? 1.20 : baseScale;
+          // Smooth spring-like lerp for card scale
+          cardScales[i] += (targetCardScale - cardScales[i]) * 0.14;
+
+          if (card === hoveredCard) {
+            card.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${tangentDeg}deg) scale(${cardScales[i].toFixed(3)})`;
+            card.style.zIndex = 70;
+            card.style.opacity = '1';
+          } else {
+            const opacity = isUpper ? Math.min(1, 0.45 + (depthProgress * 0.65)) : Math.max(0, 0.35 - (Math.abs(Math.sin(warpedNorm)) * 0.35));
+            const zIndex = Math.round(10 + depthProgress * 25);
+
+            card.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${tangentDeg}deg) scale(${cardScales[i].toFixed(3)})`;
+            card.style.zIndex = zIndex;
+            card.style.opacity = opacity.toFixed(2);
+            card.style.pointerEvents = isUpper ? 'auto' : 'none';
+          }
+
+          // Subtle reflection on lowest visible base cards
+          if (warpedNorm < -1.75 || warpedNorm > 1.75) {
+            card.classList.add('arc-card-reflection');
+          } else {
+            card.classList.remove('arc-card-reflection');
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    })();
   </script>
 </body>
 </html>
